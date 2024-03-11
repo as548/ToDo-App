@@ -93,7 +93,7 @@ function App() {
         }
 
         const data = await response.json();
-        setTodos(data);
+        // setTodos(data);
         // console.log(data)
       } catch (error) {
         console.error('Error fetching data:', error.message);
