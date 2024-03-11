@@ -62,69 +62,24 @@ const ThemeSwitcher = () => {
         <label tabIndex="0" className="btn m-1">
           <MdOutlineLightMode size={30}/>
         </label>
-        {/* "light",
-    "dark",
-    "cupcake",
-    "bumblebee",
-    "emerald",
-    "corporate",
-    "synthwave",
-    "retro",
-    "cyberpunk",
-    "valentine",
-    "halloween",
-    "garden",
-    "forest",
-    "aqua",
-    "lofi",
-    "pastel",
-    "fantasy",
-    "wireframe",
-    "black",
-    "luxury",
-    "dracula",
-    "cmyk",
-    "autumn",
-    "business",
-    "acid",
-    "lemonade",
-    "night",
-    "coffee",
-    "winter",
-    "dim",
-    "nord",
-    "sunset", */}
+       
         <ul tabIndex="0" className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
           <li className="theme-item" theme="cupcake"><a>cupcake</a></li>
-          {/* <li className="theme-item" theme="dark"><a>dark</a></li> */}
           <li className="theme-item" theme="pastel"><a>pastel</a></li>
-          {/* <li className="theme-item" theme="lofi"><a>lofi</a></li> */}
           <li className="theme-item" theme="garden"><a>garden</a></li>
-          {/* <li className="theme-item" theme="light"><a>light</a></li> */}
-          {/* <li className="theme-item" theme="bumblebee"><a>bumblebee</a></li> */}
-          <li className="theme-item" theme="synthwave"><a>synthwave</a></li>
-          {/* <li className="theme-item" theme="halloween"><a>halloween</a></li> */}
+          <li className="theme-item" theme="synthwave"><a>synthwave</a></li> 
           <li className="theme-item" theme="corporate"><a>corporate</a></li>
           <li className="theme-item" theme="fantasy"><a>fantasy</a></li>
-          {/* <li className="theme-item" theme="emerald"><a>emerald</a></li> */}
           <li className="theme-item" theme="dracula"><a>dracula</a></li>
           <li className="theme-item" theme="aqua"><a>aqua</a></li>
-          {/* <li className="theme-item" theme="wireframe"><a>wireframe</a></li> */}
-          {/* <li className="theme-item" theme="black"><a>black</a></li> */}
-          {/* <li className="theme-item" theme="cmyk"><a>cmyk</a></li> */}
           <li className="theme-item" theme="autumn"><a>autumn</a></li>
           <li className="theme-item" theme="business"><a>business</a></li>
-          {/* <li className="theme-item" theme="acid"><a>acid</a></li> */}
           <li className="theme-item" theme="lemonade"><a>lemonade</a></li>
           <li className="theme-item" theme="coffee"><a>coffee</a></li>
           <li className="theme-item" theme="winter"><a>winter</a></li>
-          {/* <li className="theme-item" theme="dim"><a>dim</a></li> */}
-          <li className="theme-item" theme="nord"><a>nord</a></li>
-          {/* <li className="theme-item" theme="sunset"><a>sunset</a></li> */}
+          <li className="theme-item" theme="nord"><a>nord</a></li>         
           <li className="theme-item" theme="valentine"><a>valentine</a></li>
           <li className="theme-item" theme="retro"><a>retro</a></li>
-          {/* <li className="theme-item" theme="cyberpunk"><a>cyberpunk</a></li> */}
-          {/* <li className="theme-item" theme="luxury"><a>luxury</a></li> */}
           <li className="theme-item" theme="night"><a>night</a></li>
         </ul>
       </div>
