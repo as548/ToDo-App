@@ -103,7 +103,8 @@ function App() {
     fetchData();
   }, []);
   const addTodo=(todo)=>{
-    setTodos((prev)=>[{id:Date.now(),...todo},...prev,])
+    setTodos((prev)=>[{id:Date.now(),...todo},...prev,]);
+    setCurrentFilter("all");
   }
 
   const updateTodo=(id,title)=>{
