@@ -62,17 +62,69 @@ const ThemeSwitcher = () => {
         <label tabIndex="0" className="btn m-1">
           <MdOutlineLightMode size={30}/>
         </label>
+        {/* "light",
+    "dark",
+    "cupcake",
+    "bumblebee",
+    "emerald",
+    "corporate",
+    "synthwave",
+    "retro",
+    "cyberpunk",
+    "valentine",
+    "halloween",
+    "garden",
+    "forest",
+    "aqua",
+    "lofi",
+    "pastel",
+    "fantasy",
+    "wireframe",
+    "black",
+    "luxury",
+    "dracula",
+    "cmyk",
+    "autumn",
+    "business",
+    "acid",
+    "lemonade",
+    "night",
+    "coffee",
+    "winter",
+    "dim",
+    "nord",
+    "sunset", */}
         <ul tabIndex="0" className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
           <li className="theme-item" theme="cupcake"><a>cupcake</a></li>
-          <li className="theme-item" theme="dark"><a>dark</a></li>
-          <li className="theme-item" theme="light"><a>light</a></li>
-          <li className="theme-item" theme="bumblebee"><a>bumblebee</a></li>
+          {/* <li className="theme-item" theme="dark"><a>dark</a></li> */}
+          <li className="theme-item" theme="pastel"><a>pastel</a></li>
+          {/* <li className="theme-item" theme="lofi"><a>lofi</a></li> */}
+          <li className="theme-item" theme="garden"><a>garden</a></li>
+          {/* <li className="theme-item" theme="light"><a>light</a></li> */}
+          {/* <li className="theme-item" theme="bumblebee"><a>bumblebee</a></li> */}
           <li className="theme-item" theme="synthwave"><a>synthwave</a></li>
-          <li className="theme-item" theme="halloween"><a>halloween</a></li>
+          {/* <li className="theme-item" theme="halloween"><a>halloween</a></li> */}
+          <li className="theme-item" theme="corporate"><a>corporate</a></li>
           <li className="theme-item" theme="fantasy"><a>fantasy</a></li>
+          {/* <li className="theme-item" theme="emerald"><a>emerald</a></li> */}
           <li className="theme-item" theme="dracula"><a>dracula</a></li>
           <li className="theme-item" theme="aqua"><a>aqua</a></li>
-          <li className="theme-item" theme="luxury"><a>luxury</a></li>
+          {/* <li className="theme-item" theme="wireframe"><a>wireframe</a></li> */}
+          {/* <li className="theme-item" theme="black"><a>black</a></li> */}
+          {/* <li className="theme-item" theme="cmyk"><a>cmyk</a></li> */}
+          <li className="theme-item" theme="autumn"><a>autumn</a></li>
+          <li className="theme-item" theme="business"><a>business</a></li>
+          {/* <li className="theme-item" theme="acid"><a>acid</a></li> */}
+          <li className="theme-item" theme="lemonade"><a>lemonade</a></li>
+          <li className="theme-item" theme="coffee"><a>coffee</a></li>
+          <li className="theme-item" theme="winter"><a>winter</a></li>
+          {/* <li className="theme-item" theme="dim"><a>dim</a></li> */}
+          <li className="theme-item" theme="nord"><a>nord</a></li>
+          {/* <li className="theme-item" theme="sunset"><a>sunset</a></li> */}
+          <li className="theme-item" theme="valentine"><a>valentine</a></li>
+          <li className="theme-item" theme="retro"><a>retro</a></li>
+          {/* <li className="theme-item" theme="cyberpunk"><a>cyberpunk</a></li> */}
+          {/* <li className="theme-item" theme="luxury"><a>luxury</a></li> */}
           <li className="theme-item" theme="night"><a>night</a></li>
         </ul>
       </div>
@@ -83,28 +135,54 @@ function App() {
   
   const [todos,setTodos]=useState([]);
   const [currentFilter, setCurrentFilter] = useState("all");
+  const [loading, setLoading] = useState(true);
   useEffect(() => {
-    const fetchData = async () => {
+    const loadData = async () => {
       try {
-        const response = await fetch('https://jsonplaceholder.typicode.com/todos');
-
-        if (!response.ok) {
-          throw new Error('Failed to fetch data');
+        // Check if todos are already stored in localStorage
+        const storedTodos = JSON.parse(localStorage.getItem('todos'));
+  
+        if (storedTodos && storedTodos.length > 0) {
+          setTodos(storedTodos);
+        } else {
+          // Fetch todos from the API if not found in localStorage
+          const response = await fetch('https://jsonplaceholder.typicode.com/todos');
+  
+          if (!response.ok) {
+            throw new Error('Failed to fetch data');
+          }
+  
+          const data = await response.json();
+          setTodos(data);
+          localStorage.setItem('todos', JSON.stringify(data));
         }
-
-        const data = await response.json();
-        // setTodos(data);
-        // console.log(data)
+  
+        // Check and set the theme
+        const theme = localStorage.getItem('theme');
+        if (theme) {
+          document.documentElement.setAttribute('data-theme', theme);
+        }
+  
+        // Set loading to false once data is loaded
+        setLoading(false);
       } catch (error) {
         console.error('Error fetching data:', error.message);
+        setLoading(false);
       }
     };
-
-    fetchData();
+  
+    // Use a loading state to track whether data is being fetched
+    
+  
+    // Only load data if the component is mounted and not loading
+    if (!loading) {
+      loadData();
+    }
   }, []);
+  
   const addTodo=(todo)=>{
-    setTodos((prev)=>[{id:Date.now(),...todo},...prev,]);
-    setCurrentFilter("all");
+    setTodos((prev)=>[{id:Date.now(),...todo},...prev,])
+    setCurrentFilter("all")
   }
 
   const updateTodo=(id,title)=>{
@@ -136,7 +214,13 @@ function App() {
      localStorage.setItem("todos",JSON.stringify(todos))
    },[todos])
 
+   useEffect(() => {
+    const theme = localStorage.getItem('theme');
 
+    if (theme) {
+      document.documentElement.setAttribute('data-theme', theme);
+    }
+  }, []);
    const showAll = () => {
     setCurrentFilter("all");
   };
@@ -164,14 +248,6 @@ function App() {
 
   return (
     <>
-    
-
-   
-    {/* <ThemeProvider value={{ themeMode, lightTheme, darkTheme }}>
-      <div className="w-full max-w-sm mx-auto flex justify-end mb-4">
-        <ThemeBtn />
-       </div>
-    </ThemeProvider> */}
     <TodoProvider  value={{todos,addTodo,updateTodo,deleteTodo,toggleComplete}}>
       <div className>
                 <div className="w-full max-w-2xl mx-auto shadow-md rounded-lg px-4 py-3 ">
@@ -182,7 +258,7 @@ function App() {
                     </div>
           <div className="todos-filter">
             <div className="dropdown">
-                <label tabIndex="0" className="btn m-1">Filter</label>
+                <label tabIndex="0" className="btn m-1">Filter{`(${currentFilter})`}</label>
                 <ul tabIndex="0" className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52 z-10">
                     <li onClick={showAll}><a>All {`(${todos.length})`}</a></li>
                     <li onClick={showPending}><a>Pending {`(${todos.filter(todo => !todo.completed).length})`}</a></li>
