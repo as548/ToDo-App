@@ -30,7 +30,7 @@ const TodoForm = () => {
         Add
     </button> */}
     <div className="input-section">
-    <input type="text" placeholder="Add a todo . . ." className="w-full border border-black/10 rounded-l-lg px-3 outline-none duration-150 bg-white/20 py-1.5" values={todo}
+    <input type="text" placeholder="Add a todo . . ." className="w-full border border-black/10 rounded-l-lg px-3 outline-none duration-150 bg-white/20 py-1.5" value={todo}
         onChange={(e)=>setTodo(e.target.value)} />
                
             <button type="submit" className="btn btn-secondary add-task-button">
