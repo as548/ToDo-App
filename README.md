@@ -21,16 +21,16 @@ A Todo App built using react having features of add, edit, delete, deleteAll, fi
 
 ## Installation
 1. Clone the Repository
-  ' git clone https://github.com/as548/ToDo-App.git '
+` git clone https://github.com/as548/ToDo-App.git `
 
 2. Navigate to the project directory
-   ' cd ToDo-App '
+   ` cd ToDo-App `
 
 3. Install dependencies
-   ' npm i '
+   ` npm i `
 
 4. Run the app
-   ' npm run dev '
+   ` npm run dev `
 
 Open your browser and visit http://localhost:5173/ to view  ToDo App
 
