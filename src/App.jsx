@@ -3,7 +3,7 @@ import "./App.css";
 import { TodoProvider } from "./contexts/ToDoContext";
 import TodoForm from "./components/TodoForm";
 import TodoItem from "./components/TodoItem";
-
+import AlertMessage from "./components/alertMessage";
 import { MdOutlineLightMode } from "react-icons/md";
 import "./style/styles.css";
 
@@ -123,8 +123,9 @@ const ThemeSwitcher = () => {
 };
 function App() {
   const [todos, setTodos] = useState([]);
-  const [loading, setLoading] = useState(true);
   const [currentFilter, setCurrentFilter] = useState("all");
+  const [errorMessage, setErrorMessage] = useState("");
+  const [errorType, setErrorType] = useState("");
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -134,6 +135,7 @@ function App() {
         );
 
         if (!response.ok) {
+          // showAlertMessage("Failed to fetch the data");
           throw new Error("Failed to fetch data");
         }
 
@@ -142,6 +144,10 @@ function App() {
         const sortedData = data.sort((a, b) => b.id - a.id);
         setTodos(sortedData);
       } catch (error) {
+        console.error("Error fetching data:", error.message);
+        // Set error message and type for display
+        setErrorMessage("⚠ Failed to fetch data. Please try again.");
+        setErrorType("error");
         console.error("Error fetching data:", error.message);
       }
     };
@@ -184,18 +190,18 @@ function App() {
     setTodos([]);
   };
 
-  //storing datas in local storage
-  useEffect(() => {
-    const todos = JSON.parse(localStorage.getItem("todos"));
+  //storing data in local storage
+  // useEffect(() => {
+  //   const todos = JSON.parse(localStorage.getItem("todos"));
 
-    if (todos && todos.length > 0) {
-      setTodos(todos);
-    }
-  }, []);
+  //   if (todos && todos.length > 0) {
+  //     setTodos(todos);
+  //   }
+  // }, []);
 
-  useEffect(() => {
-    localStorage.setItem("todos", JSON.stringify(todos));
-  }, [todos]);
+  // useEffect(() => {
+  //   localStorage.setItem("todos", JSON.stringify(todos));
+  // }, [todos]);
 
   //storing the theme in local storage
   useEffect(() => {
@@ -235,6 +241,7 @@ function App() {
       value={{ todos, addTodo, updateTodo, deleteTodo, toggleComplete }}
     >
       <div className>
+        <AlertMessage message={errorMessage} type={errorType} />
         <div className="w-full max-w-2xl mx-auto shadow-md rounded-lg px-4 py-3 ">
           <h1 className="text-2xl font-bold text-center mb-8 mt-2 ">
             ToDo List
