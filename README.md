@@ -9,6 +9,7 @@ A Todo App built using react having features of add, edit, delete, deleteAll, fi
 - Filter Tasks by their completion status.
 - Multiple theme user interface.
 - Delete all Tasks
+- Error Handling
 - Display total count of Tasks, pending Tasks and completed Tasks
 
 ## Technologies Used
