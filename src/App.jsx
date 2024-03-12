@@ -131,7 +131,7 @@ function App() {
       try {
         //Fetching the todos
         const response = await fetch(
-          "https://jsonplaceholder.typicode.com/todo"
+          "https://jsonplaceholder.typicode.com/todos"
         );
 
         if (!response.ok) {
