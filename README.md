@@ -1,3 +1,22 @@
+# ToDo App
+A Todo App built using react having features of add, edit, delete, deleteAll, filter tasks, mark as completed or not-completed. This app used JSON Api for fetching tasks. State management is implemented using Context API. This App have multiple themes to make UI better.
+
+
+## Features
+- Fetch Task from API.
+- Add new Tasks.
+- Edit pending Tasks.
+- Filter Tasks by their completion status.
+- Multiple theme user interface.
+- Delete all Tasks
+- Display total count of Tasks, pending Tasks and completed Tasks
+
+## Technologies Used
+- React
+- Context Api
+- Tailwind CSS
+- Daisy UI for theme
+
 # React + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
