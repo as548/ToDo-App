@@ -1,23 +1,31 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useTodo } from "../contexts/ToDoContext";
 import { IoAddOutline } from "react-icons/io5";
-
+import AlertMessage from "./alertMessage";
 import "../style/styles.css";
 const TodoForm = () => {
   const [todo, setTodo] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
+  const [errorType, setErrorType] = useState("");
+  const [key, setKey] = useState(0); // Add a key state
 
   const { addTodo } = useTodo();
 
   const add = (e) => {
     e.preventDefault();
 
-    if (!todo) return;
-
-    addTodo({ title: todo, completed: false });
-    setTodo("");
+    if (!todo) {
+      setErrorMessage("⚠ Please enter a Task");
+      setErrorType("error");
+      setKey((prevKey) => prevKey + 1); // Increment the key to force a re-render
+    } else {
+      addTodo({ title: todo, completed: false });
+      setTodo("");
+    }
   };
   return (
     <form onSubmit={add} className="flex">
+      <AlertMessage key={key} message={errorMessage} type={errorType}   />
       <div className="input-section">
         <input
           type="text"
