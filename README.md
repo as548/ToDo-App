@@ -17,6 +17,24 @@ A Todo App built using react having features of add, edit, delete, deleteAll, fi
 - Tailwind CSS
 - Daisy UI for theme
 
+
+
+## Installation
+1. Clone the Repository
+  ' git clone https://github.com/as548/ToDo-App.git '
+
+2. Navigate to the project directory
+   ' cd ToDo-App '
+
+3. Install dependencies
+   ' npm i '
+
+4. Run the app
+   ' npm run dev '
+
+Open your browser and visit http://localhost:5173/ to view  ToDo App
+
+
 # React + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
