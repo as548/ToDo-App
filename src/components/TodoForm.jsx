@@ -1,49 +1,40 @@
-import React, { useState } from 'react'
-import  {useTodo} from "../contexts/ToDoContext"
+import React, { useState } from "react";
+import { useTodo } from "../contexts/ToDoContext";
 import { IoAddOutline } from "react-icons/io5";
 
-
-import '../style/styles.css'
+import "../style/styles.css";
 const TodoForm = () => {
-  const [todo,setTodo]=useState("")
+  const [todo, setTodo] = useState("");
 
-  const {addTodo}=useTodo();
+  const { addTodo } = useTodo();
 
-  const add=(e)=>{
-    e.preventDefault()
-    
-    if(!todo)return
+  const add = (e) => {
+    e.preventDefault();
 
-    addTodo({title:todo,completed:false});
+    if (!todo) return;
+
+    addTodo({ title: todo, completed: false });
     setTodo("");
-  }
+  };
   return (
     <form onSubmit={add} className="flex">
-    {/* <input
-        type="text"
-        placeholder="Write Todo..."
-        className="w-full border border-black/10 rounded-l-lg px-3 outline-none duration-150 bg-white/20 py-1.5 "
-        values={todo}
-        onChange={(e)=>setTodo(e.target.value)}
-    />
-    <button type="submit" className="rounded-r-lg px-3 py-1 bg-green-600 text-white shrink-0">
-        Add
-    </button> */}
-    <div className="input-section">
-    <input type="text" placeholder="Add a todo . . ." className="w-full border border-black/10 rounded-l-lg px-3 outline-none duration-150 bg-white/20 py-1.5" value={todo}
-        onChange={(e)=>setTodo(e.target.value)} />
-               
-            <button type="submit" className="btn btn-secondary add-task-button">
-              <div
-                
-              >
-              <IoAddOutline color='black' size={30}/>
-                </div>
-              </button>
+      <div className="input-section">
+        <input
+          type="text"
+          placeholder="Add a todo . . ."
+          className="w-full borde border-black/10 rounded-l-lg px-3 outline-none duration-150 bg-white/20 py-3"
+          value={todo}
+          onChange={(e) => setTodo(e.target.value)}
+        />
 
-            </div>
+        <button type="submit" className="btn btn-secondary add-task-button">
+          <div>
+            <IoAddOutline color="black" size={30} />
+          </div>
+        </button>
+      </div>
     </form>
-  )
-}
+  );
+};
 
-export default TodoForm
+export default TodoForm;
