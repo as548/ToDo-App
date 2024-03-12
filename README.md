@@ -11,7 +11,7 @@ A Todo App built using react having features of add, edit, delete, deleteAll, fi
 - Delete all Tasks
 - Error Handling
 - Display total count of Tasks, pending Tasks and completed Tasks
-
+- Display task in descending order on the basis of their id.
 ## Technologies Used
 - React
 - Context Api
