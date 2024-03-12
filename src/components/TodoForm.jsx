@@ -7,7 +7,7 @@ const TodoForm = () => {
   const [todo, setTodo] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
   const [errorType, setErrorType] = useState("");
-  const [key, setKey] = useState(0); // Add a key state
+  const [key, setKey] = useState(0); 
 
   const { addTodo } = useTodo();
 
@@ -17,7 +17,7 @@ const TodoForm = () => {
     if (!todo) {
       setErrorMessage("⚠ Please enter a Task");
       setErrorType("error");
-      setKey((prevKey) => prevKey + 1); // Increment the key to force a re-render
+      setKey((prevKey) => prevKey + 1); 
     } else {
       addTodo({ title: todo, completed: false });
       setTodo("");
